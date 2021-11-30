@@ -6,11 +6,25 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:33:57 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/11/22 19:10:28 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/11/30 02:25:29 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	free_tex(t_sl *sl)
+{
+	int	i;
+
+	i = 0;
+	while (i < 14)
+	{
+		mlx_destroy_image(sl->ptr, sl->tex[i].ptr);
+		i++;
+	}
+	free(sl->tex);
+	sl->tex = NULL;
+}
 
 static int	get_path(t_sl *sl, int i)
 {

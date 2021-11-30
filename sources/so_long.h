@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 16:26:58 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/09/21 06:23:34 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/11/30 01:52:10 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,12 @@ void	exit_error(t_sl *sl);
 int		check_map(t_sl *sl);
 int		launch(t_sl *sl);
 int		textures(t_sl *sl);
-int		ft_close(t_sl sl);
+int		ft_close(t_sl *sl);
 void	ft_pixel_put(t_img *img, int x, int y, int color);
 t_img	*new_image(t_sl *sl, int x, int y);
 void	free_img(t_sl *sl, t_img *img);
+void	free_tex(t_sl *sl);
+void	free_sl(t_sl *sl);
 int		get_pixel(t_img *img, int x, int y);
 void	background(t_sl *sl);
 void	objects(t_sl *sl);

@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:15:36 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/11/28 17:11:22 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/11/30 02:38:27 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 static int	keypress(int keycode, t_sl *sl)
 {
 	if (keycode == 65307)
+	{
+		free_sl(sl);
 		exit(SUCCESS);
+	}
 	if (keycode == 119 || keycode == 65362)
 		move_up(sl);
 	if (keycode == 115 || keycode == 65364)
@@ -29,6 +32,14 @@ static int	keypress(int keycode, t_sl *sl)
 
 static int	display(t_sl *sl)
 {
+	char	*s;
+
+	s = ft_itoa(sl->move);
+	if (!s)
+	{
+		sl->error = BASIC_ERROR;
+		exit_error(sl);
+	}
 	free_img(sl, sl->img);
 	sl->img = new_image(sl, ft_strlen(sl->map[1]) * sl->a, sl->dim.y * sl->a);
 	if (sl->img == NULL)
@@ -36,7 +47,9 @@ static int	display(t_sl *sl)
 	background(sl);
 	objects(sl);
 	mlx_string_put(sl->ptr, sl->win, 10, 15, 0x9b8143, "MOVES :");
-	mlx_string_put(sl->ptr, sl->win, 10, 30, 0x9b8143, ft_itoa(sl->move));
+	mlx_string_put(sl->ptr, sl->win, 10, 30, 0x9b8143, s);
+	free (s);
+	s = NULL;
 	if (sl->pexit == 1 && sl->count == sl->col)
 		exit_error(sl);
 	return (SUCCESS);

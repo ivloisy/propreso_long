@@ -6,7 +6,7 @@
 #    By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/11 16:17:21 by ivloisy           #+#    #+#              #
-#    Updated: 2021/11/29 02:08:51 by ivloisy          ###   ########.fr        #
+#    Updated: 2021/11/29 23:41:12 by ivloisy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC = ./$(SRCDIR)/background.c \
 		./$(SRCDIR)/moves.c \
 		./$(SRCDIR)/objects.c \
 		./$(SRCDIR)/so_long.c \
-		./$(SRCDIR)/textures.c
+		./$(SRCDIR)/textures.c \
+		./$(SRCDIR)/free.c
 
 BON = ./$(BONDIR)/background_bonus.c \
 		./$(BONDIR)/check_map_bonus.c \
@@ -44,7 +45,8 @@ BON = ./$(BONDIR)/background_bonus.c \
 		./$(BONDIR)/moves_bonus.c \
 		./$(BONDIR)/objects_bonus.c \
 		./$(BONDIR)/so_long_bonus.c \
-		./$(BONDIR)/textures_bonus.c
+		./$(BONDIR)/textures_bonus.c \
+		./$(BONDIR)/free_bonus.c
 
 HDR = ./$(SRCDIR)/get_next_line.h \
 		./$(SRCDIR)/so_long.h

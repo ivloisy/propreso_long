@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:20:12 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/11/28 17:07:38 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/11/30 02:27:23 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	put_error(int x)
 	else if (x == 8)
 		ft_putstr_fd("The number of players, collectives or exits.", 1);
 	else if (x == 9)
-		ft_putstr_fd("MLX.", 1);
+		ft_putstr_fd("MLX error.", 1);
 	else if (x == 10)
 		ft_putstr_fd("Textures not loaded.", 1);
 	else if (x == 11)
@@ -53,12 +53,13 @@ void	exit_error(t_sl *sl)
 	}
 	if (sl->error == BASIC_ERROR)
 		perror("Error\nerrno ");
+	free_sl(sl);
 	exit(EXIT_FAILURE);
 }
 
-int	ft_close(t_sl sl)
+int	ft_close(t_sl *sl)
 {
-	(void)sl;
+	free_sl(sl);
 	exit(SUCCESS);
 	return (0);
 }

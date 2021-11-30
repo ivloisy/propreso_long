@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:15:36 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/11/28 16:57:29 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/11/30 02:08:26 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 static int	keypress(int keycode, t_sl *sl)
 {
 	if (keycode == 65307)
+	{
+		free_sl(sl);
 		exit(SUCCESS);
+	}
 	if (keycode == 119 || keycode == 65362)
 		move_up(sl);
 	if (keycode == 115 || keycode == 65364)

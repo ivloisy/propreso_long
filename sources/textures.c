@@ -12,6 +12,20 @@
 
 #include "so_long.h"
 
+void	free_tex(t_sl *sl)
+{
+	int	i;
+
+	i = 0;
+	while (i < 14)
+	{
+		mlx_destroy_image(sl->ptr, sl->tex[i].ptr);
+		i++;
+	}
+	free(sl->tex);
+	sl->tex = NULL;
+}
+
 static int	get_path(t_sl *sl, int i)
 {
 	char	*s1;
