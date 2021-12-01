@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 23:39:29 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/11/30 02:17:52 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/12/01 00:34:14 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	free_tp(char **tab)
 	int	i;
 
 	i = 0;
-	while (i < 14)
+	while (tab[i])
 	{
 		free(tab[i]);
 		tab[i] = NULL;
@@ -60,10 +60,13 @@ void	free_sl(t_sl *sl)
 		free_tex(sl);
 	free_pos(sl);
 	free_img(sl, sl->img);
-	if (sl->ptr)
+	if (sl->ptr && sl->win)
 	{
 		mlx_clear_window(sl->ptr, sl->win);
 		mlx_destroy_window(sl->ptr, sl->win);
+	}
+	if (sl->ptr)
+	{
 		mlx_destroy_display(sl->ptr);
 		free(sl->ptr);
 	}

@@ -6,7 +6,7 @@
 /*   By: ivloisy <ivloisy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 16:33:57 by ivloisy           #+#    #+#             */
-/*   Updated: 2021/09/21 23:37:34 by ivloisy          ###   ########.fr       */
+/*   Updated: 2021/11/30 22:37:55 by ivloisy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_tex(t_sl *sl)
 	int	i;
 
 	i = 0;
-	while (i < 14)
+	while (i < 14 && sl->tex[i].ptr)
 	{
 		mlx_destroy_image(sl->ptr, sl->tex[i].ptr);
 		i++;
@@ -44,6 +44,7 @@ static int	get_path(t_sl *sl, int i)
 	s1 = NULL;
 	free(s2);
 	s2 = NULL;
+	sl->tp[i + 1] = NULL;
 	return (SUCCESS);
 }
 
@@ -65,7 +66,7 @@ int	textures(t_sl *sl)
 	int	i;
 
 	i = 0;
-	sl->tp = (char **)malloc(sizeof(char *) * 14);
+	sl->tp = (char **)malloc(sizeof(char *) * 15);
 	if (sl->tp == NULL)
 		return (sl->error = BASIC_ERROR);
 	sl->tex = (t_img *)malloc(sizeof(t_img) * 14);
@@ -75,9 +76,11 @@ int	textures(t_sl *sl)
 	{
 		if (get_path(sl, i) != SUCCESS)
 			return (sl->error);
-		if (get_tex(sl, i) != SUCCESS)
-			return (sl->error);
 		i++;
 	}
+	i = -1;
+	while (++i < 14)
+		if (get_tex(sl, i) != SUCCESS)
+			return (sl->error);
 	return (SUCCESS);
 }
